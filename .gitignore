@@ -1,0 +1,9 @@
+./config.py
+.vscode/
+.idea/
+__pycache__/
+log/
+webaventure.conf
+static/img/
+
+config.py

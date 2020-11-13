@@ -1,1 +1,3 @@
 # todo : plein de choses !
+# todo : déjà, commencer par utiliser github correctement
+
