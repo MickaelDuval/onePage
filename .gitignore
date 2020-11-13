@@ -1,9 +1,8 @@
-./config.py
+config.py
 .vscode/
 .idea/
 __pycache__/
 log/
-webaventure.conf
+onePage.conf
 static/img/
 
-config.py

@@ -12,9 +12,13 @@ import config
 
 exempleConfig = """
 portDebug = 9875
-repInstall = "D:/prj/webaventure"
+hoteDebug = "localhost"
+repInstall = "D:/prj/onePage"
 repPages = "pages"
 pageIndex = "_index_"
+
+# contient les pages 'techniques', messages d'erreurs, page 404 etc
+repHtmlTechnique = "defautHtml"
 """
 
 sys.path.append(config.repInstall) 
