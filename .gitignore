@@ -1,0 +1,8 @@
+config.py
+.vscode/
+.idea/
+__pycache__/
+log/
+onePage.conf
+static/img/
+

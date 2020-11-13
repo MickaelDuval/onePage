@@ -1,0 +1,43 @@
+
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Mickaël DUVAL">
+
+        <title>OnePage</title>
+
+        <script src="{{url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+        <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+        {% for css in lstCSS %}
+            <link href="{{url_for('static', filename=css)}}" rel="stylesheet">
+        {% endfor %}
+        
+        <!-- <link rel='shortcut icon' href="{{ url_for('static', filename='img/favicon.svg') }}"> -->
+
+    </head>
+
+    <body>
+        <main role="main" class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Cette page ne fait rien</h1>
+                    <p>Sinon charger le contenu html. C'est le cadre qui ne bouge pas d'une 'sous page' à l'autre.</p>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 3em;">
+                <div class="col-12" id="contenu"></div>
+            </div>
+        </main>
+
+    </body>
+
+    <script src="{{url_for('static', filename='js/onePage.js')}}"></script>
+
+    <script>
+        $(function(){
+            getPage("#");
+        });
+    </script>
+</html>

@@ -1,0 +1,50 @@
+body{
+    /* font-family: 'Courier New', Courier, monospace; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #2c2d38;
+    color: #d5e8fc;
+    font-size: 1.3em;
+}
+
+h1{
+    color: #ffffff;
+}
+
+a, a:not([href]){
+    color: #8b9cff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover, a:hover:not([href]){
+    color: #59deff;
+    text-decoration: none;
+}
+
+p{
+    text-align: justify;
+}
+/* a:not([href]) {
+    color: #2ec500; 
+    color: inherit;
+} */
+
+.erreur{
+    color:#ff28ad;
+    font-weight: bolder;
+}
+
+.mort{
+    color:#ff0707;
+    font-weight: bolder;
+}
+
+.chance{
+    color:#02cc1d;
+    font-weight: bolder;
+}
+
+.tresor{
+    color:#ffe600;
+    font-weight: bolder;
+}
