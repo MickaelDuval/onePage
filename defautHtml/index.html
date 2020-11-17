@@ -24,9 +24,22 @@
                 <div class="col-12">
                     <h1>Cette page ne fait rien</h1>
                     <p>Sinon charger le contenu html. C'est le cadre qui ne bouge pas d'une 'sous page' à l'autre.</p>
+                    <p>
+                        Histoire sélectionnée : <span id="histoireEnCours"></span>
+                    </p>
+                    <p>
+                        <ul>
+                            {% for h in lstHistoires %}
+                            <li><a href="javascript:void(0)" class="histoire" id="{{ h }}">{{ h }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </p>
+    
                 </div>
             </div>
-            <div class="col-12" id="contenu"></div>
+            <div class="col-12" id="contenu">
+                
+            </div>
             <!-- <div class="row" style="margin-top: 3em;"></div> -->
         </main>
 
@@ -36,7 +49,10 @@
 
     <script>
         $(function(){
-            getPage("#");
+            $(".histoire").click(function(evt){
+                $("#histoireEnCours").html(evt.target.id);
+                getPage($("#histoireEnCours").html(), "#");
+            });
         });
     </script>
 </html>

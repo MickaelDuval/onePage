@@ -1,7 +1,6 @@
-function getPage(idPage="#"){
+function getPage(histoire, idPage="#"){
     var data = {};
     $("#contenu").html("<p width='100%' class='text-center'>... chargement en cours ...</p>");
-
     // data.numPage = numPage;
 
     // // ajouter tous les datas qui trainent dans les formulaires
@@ -12,7 +11,8 @@ function getPage(idPage="#"){
     $.ajax({
         method: "POST",
         data:{
-            "idPage":idPage
+            "idPage":idPage,
+            "histoire":histoire
         },
         url:"/getPage",
         success: function(data){
