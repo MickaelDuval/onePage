@@ -18,6 +18,7 @@ class OnePage(flask.Flask):
         self.secret_key = "NanMaisLàFautMettreUneVraieClefDeSecu"
 
         self.add_url_rule("/", "Accueil", self.index, methods=["GET"])
+        # self.add_url_rule("/getPage", "Renvoie la liste des histoires", self.getPage, methods=["POST"])
         self.add_url_rule("/getPage", "Renvoie la page", self.getPage, methods=["POST"])
 
         # faut le chemin complet vers le rep
@@ -32,6 +33,7 @@ class OnePage(flask.Flask):
         }
 
         self.dicGeneral["lstCSS"].append("css/defautOnePage.css")
+        self.dicGeneral["lstHistoires"] = os.listdir(config.repPages)
 
     def index(self):
         return flask.render_template("index.html", **self.dicGeneral)
@@ -49,6 +51,8 @@ class OnePage(flask.Flask):
     def getPage(self):
         # TODO: gérer page 500 ici
         idPage = flask.request.form.get('idPage')
+        histoire = flask.request.form.get('histoire')
+        print(f"histoire : {histoire} -- page {idPage}")
         
         # pour pouvoir tester dans le code des pages : autrement il va relancer le hasard qui s'est déja résolu
         self.rechargement = False
@@ -87,7 +91,7 @@ class OnePage(flask.Flask):
 
         bBlocCode = False
         try : 
-            with open(os.path.join(config.repPages, idPage + ".html"), "r", encoding="utf-8") as f : 
+            with open(os.path.join(config.repPages, histoire, idPage + ".html"), "r", encoding="utf-8") as f : 
                 for l in f.readlines():
                     if not len(l):
                         continue
@@ -130,15 +134,18 @@ class OnePage(flask.Flask):
         self.dicReponse["texte"] += """
         <script>
             $(function(){
-                $("a[id],.choix").click(function(evt){
+                //$("a[id],.choix").click(function(evt){
+                $(".choix").click(function(evt){
                     if(this.nodeName == "A"){
                         $(this).attr('href', 'javascript:void(0)');
                     }
-                    getPage(evt.target.id);
+                    console.log("Click sur choix " + $("#histoireEnCours").html() + " -- " + evt.target.id);
+                    getPage($("#histoireEnCours").html(), evt.target.id);
                 });
             });
         </script>
         """
+        
 
         pageTmp = jinja2.Template(self.dicReponse["texte"])
         return pageTmp.render(**self.dicReponse)
